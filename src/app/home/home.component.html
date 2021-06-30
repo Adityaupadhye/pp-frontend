@@ -1,0 +1,74 @@
+<ngx-spinner type="ball-clip-rotate-multiple"><p style="color: white;">Loading...</p></ngx-spinner>
+<div class="container">
+    <div class="row mt-5  py-2">
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <!-- intro text -->
+            <img src="/assets/logo/IdeaShare.png" alt="IdeaShare Log" width="100%" height="auto">
+            <h1>Projects are an integral part of Engineering.</h1>
+            <h4 class="pt-2">
+                Make Awesome Projects. Share your project Ideas. Get Innovative Ideas. Start a new project.
+            </h4>
+        </div>
+        <div class="col-md-5">
+            <!-- login card -->
+            <div *ngIf="loginVisible">
+                <div class="card">
+                    <h3 class="card-title text-center mt-2 text-uppercase">Login</h3>
+                    <div class="card-text">
+                        <form class="p-2" #userLogin="ngForm" (ngSubmit)="onLoginFormSubmit(userLogin.value)">
+                            <div class="form-floating mb-3">
+                                <input type="text" required name="mis" class="form-control" id="floatingInput" placeholder="name@example.com" ngModel>
+                                <label for="floatingInput">MIS Number</label>
+                            </div>
+                            <div class="form-floating">
+                                <input autocomplete="on" type="password" name="pswd" class="form-control" id="floatingPassword" placeholder="Password" ngModel>
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            <div [ngClass]="{'alert alert-danger p-2 mt-2': msg.length>0}">{{msg}}</div>
+                            <button mat-raised-button type="submit" class="custom-btn my-2 w-100">LOGIN</button>
+                            <p (click)="loginVisible=!loginVisible;" class="text-primary text-center" id="signUp" style="cursor: pointer;">
+                                Don't have an account? Sign Up!
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- sign up card -->
+            <div *ngIf="!loginVisible">
+                <div class="card">
+                    <h3 class="card-title text-center mt-2">SIGN UP</h3>
+                    <div class="card-text">
+                        <form class="p-3" (ngSubmit)="onSignUpFormSubmit()">
+                            <div class="form-floating mb-3">
+                                <input name="name" type="text" class="form-control" id="floatingInputName" placeholder="my name" [(ngModel)]="user.name">
+                                <label for="floatingInputName">Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input name="mis" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="user.mis">
+                                <label for="floatingInput">MIS Number</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input autocomplete="on" name="pswd" type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="user.pswd">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input autocomplete="on" [(ngModel)]="user.repswd" name="repswd" (ngModelChange)="checkPassword()" type="password" class="form-control" id="floatingPasswordRecheck" placeholder="Re-enter Password">
+                                <label for="floatingPasswordRecheck">Re-enter Password</label>
+                            </div>
+                            <div class="m-1">
+                                <p class="text-danger">{{errorTxt}}</p>
+                            </div>
+                            <div [ngClass]="{'alert alert-danger p-2 mt-2': msg.length>0}">{{msg}}</div>
+                            <button mat-raised-button [disabled]="!checkAllConditions()" type="submit" class="custom-btn my-2 w-100">SIGN UP</button>
+                            <p (click)="loginVisible=!loginVisible;" class="text-primary text-center" id="signUp" style="cursor: pointer;">
+                                Already have an account? Log In!
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

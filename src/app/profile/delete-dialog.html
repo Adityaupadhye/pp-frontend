@@ -1,0 +1,6 @@
+<h1 mat-dialog-title>Confirm Deletion</h1>
+<div mat-dialog-content>{{content}}</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-stroked-button matDialogClose color="primary">Cancel</button>
+  <button mat-stroked-button color="warn" (click)="deleteClick()">Delete</button>
+</div>

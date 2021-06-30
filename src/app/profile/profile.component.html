@@ -1,0 +1,195 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="container">
+    <ngx-spinner type="ball-clip-rotate-multiple">
+        <p style="color: white;">Loading...</p>
+    </ngx-spinner>
+    <div class="row my-3" *ngIf="!this.util.uService.myProfile.mis">
+        <div class="alert alert-danger mt-3 text-center" role="alert">
+            Problem loading your profile! &nbsp; &nbsp;
+            <button mat-stroked-button routerLink="/feed">Back to Home</button>
+        </div>
+    </div>
+    <div class="row mt-3" *ngIf="this.util.uService.myProfile.mis">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <!-- Personal details -->
+            <section>
+                <div class="row p-1">
+                    <div class="col-md-10">
+                        <h3>Personal Details</h3>
+                    </div>
+                    <div class="col-md-2">
+                        <button mat-button (click)="editMode=!editMode" class="w-100">
+                            <img [src]="editMode? 'assets/icons/close.svg': 'assets/icons/edit.svg'" alt="edit icon"
+                                height="32px" width="32px">
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <img [src]="this.util.uService.myProfile.gender=='Male'? '/assets/icons/profile_man.svg':'/assets/icons/profile_woman.svg'" alt="Profile Picture" class="mb-2 circle-crop"
+                                    height="250px" width="250px">
+                                <h2 *ngIf="!editMode">{{this.util.uService.myProfile.name}}</h2>
+                            </div>
+                            <div class="col-md-8">
+                                <div *ngIf="!editMode">
+                                    <div class="my-2">
+                                        <label>Email</label>
+                                        <div class="text-field" placeholder="email">{{this.util.uService.myProfile.email}}</div>
+                                    </div>
+                                    <div class="my-2">
+                                        <label>MIS</label>
+                                        <div class="text-field">{{this.util.uService.myProfile.mis}}</div>
+                                    </div>
+                                    <div class="my-2">
+                                        <label>Branch</label>
+                                        <div class="text-field">Electrical</div>
+                                    </div>
+                                    <div class="my-2">
+                                        <label>Year of Study</label>
+                                        <div class="text-field">{{this.util.uService.myProfile.yearOfStudy}}</div>
+                                    </div>
+                                    <div class="my-2">
+                                        <label>Gender</label>
+                                        <div class="text-field">{{this.util.uService.myProfile.gender}}</div>
+                                    </div>
+                                </div>
+                                <div *ngIf="editMode">
+                                    <form>
+                                        <div class="form-floating my-1">
+                                            <input name="mis" type="text" class="form-control" id="floatingPassword"
+                                                [value]="personalDetails.name" [(ngModel)]="personalDetails.name">
+                                            <label for="floatingPassword">Name</label>
+                                        </div>
+                                        <div class="form-floating my-1">
+                                            <input name="email" type="email" class="form-control" id="floatingInput"
+                                                [value]="personalDetails.email" [(ngModel)]="personalDetails.email">
+                                            <label for="floatingInput">Email</label>
+                                        </div>
+                                        <div class="form-floating my-1">
+                                            <select name="yearOfStudy" class="form-select" id="floatingSelect"
+                                                [value]="personalDetails.yearOfStudy"
+                                                [(ngModel)]="personalDetails.yearOfStudy">
+                                                <option value="FY">FY</option>
+                                                <option value="SY">SY</option>
+                                                <option value="TY">TY</option>
+                                                <option value="BTech">BTech</option>
+                                            </select>
+                                            <label for="floatingSelect">Year of Study</label>
+                                        </div>
+                                        <div class="form-floating my-1">
+                                            <select name="gender" class="form-select" id="floatingSelectGender"
+                                                [value]="personalDetails.gender"
+                                                [(ngModel)]="personalDetails.gender">
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                            <label for="floatingSelectGender">Gender</label>
+                                        </div>
+                                        <button mat-raised-button type="submit" (click)="onPersonalEditFormSubmit()"
+                                            class="custom-btn w-100 mt-1">SAVE CHANGES</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- skills and interests -->
+            <section class="my-3">
+                <h3>Skills and Interests
+                    <button mat-button (click)="editSI=!editSI">
+                        <img [src]="editSI? 'assets/icons/close.svg': 'assets/icons/edit.svg'" alt="edit icon"
+                            height="24px" width="24px">
+                    </button>
+                </h3>
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Skills</h4>
+                        <div *ngIf="!editSI">
+                            <mat-chip-list>
+                                <div *ngFor="let skill of this.util.uService.myProfile.skills">
+                                    <mat-chip>{{skill}}</mat-chip>
+                                </div>
+                            </mat-chip-list>
+                        </div>
+                        <div *ngIf="editSI">
+                            <mat-form-field class="example-chip-list" appearance="fill">
+                                <mat-label>Your Skills</mat-label>
+                                <mat-chip-list #chipList aria-label="Fruit selection">
+                                  <mat-chip *ngFor="let skill of newSkills" [selectable]="true"
+                                           [removable]="true" (removed)="removeSkill(skill)">
+                                    {{skill}}
+                                    <mat-icon matChipRemove>cancel</mat-icon>
+                                  </mat-chip>
+                                  <input placeholder="New skill..."
+                                         [matChipInputFor]="chipList"
+                                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                         [matChipInputAddOnBlur]="true"
+                                         (matChipInputTokenEnd)="addSkill($event)">
+                                </mat-chip-list>
+                            </mat-form-field>
+                        </div>
+                        <h4 class="mt-2">Interests</h4>
+                        <div *ngIf="!editSI">
+                            <mat-chip-list>
+                                <div *ngFor="let interest of this.util.uService.myProfile.skills">
+                                    <mat-chip>{{interest}}</mat-chip>
+                                </div>
+                            </mat-chip-list>
+                        </div>
+                        <div *ngIf="editSI">
+                            <mat-form-field class="example-chip-list" appearance="fill">
+                                <mat-label>Your Interests</mat-label>
+                                <mat-chip-list #chipList aria-label="Fruit selection">
+                                  <mat-chip *ngFor="let interest of newInterests" [selectable]="true"
+                                           [removable]="true" (removed)="removeInterest(interest)">
+                                    {{interest}}
+                                    <mat-icon matChipRemove>cancel</mat-icon>
+                                  </mat-chip>
+                                  <input placeholder="New Interest..."
+                                         [matChipInputFor]="chipList"
+                                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                         [matChipInputAddOnBlur]="true"
+                                         (matChipInputTokenEnd)="addInterest($event)">
+                                </mat-chip-list>
+                              </mat-form-field>
+                        </div>
+                        <button *ngIf="editSI" class="custom-btn" mat-raised-button color="warn" (click)="updateSI()">SAVE CHANGES</button>
+                    </div>
+                </div>
+            </section>
+            <!-- projects -->
+            <section class="my-3">
+                <h3>Projects</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <div *ngFor="let item of this.util.pService.myProjects; let idx=index">
+                            <div class="alert alert-info p-3" role="alert" style="cursor: pointer;">
+                                <h4 class="text-capitalized">{{item['title']}}</h4>
+                            <h6 class="text-muted" [innerHTML]="item.shortDesc"></h6>
+                                <div>
+                                    <button mat-stroked-button class="me-2" (click)="goToProject(item)" style="background-color: greenyellow;">View</button>
+                                    <button mat-stroked-button class="mx-2" color="primary" (click)="editProject(item)">Edit</button>
+                                    <button mat-stroked-button class="mx-2" color="warn" (click)="openDialog(item)">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- delete account -->
+            <section class="mt-3">
+                <h3>Delete My Account</h3>
+                <div class="alert alert-danger">
+                    Deleting your account will permanentely delete all your data: Personal Details, Skills&Interests, All Projects. <br>
+                    Are you sure you want to Delete? <br>
+                    <button mat-stroked-button color="warn" (click)="openAccountDelete()">Delete Account</button>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

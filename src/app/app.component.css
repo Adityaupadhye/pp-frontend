@@ -1,0 +1,51 @@
+.main-container{
+    background-color: var(--main-bg);
+    min-height: 600px;
+}
+
+router-outlet{
+    height: 100%;
+}
+
+mat-sidenav{
+    width: 250px;
+    background-color: var(--main-bg);
+}
+
+mat-sidenav ul{
+    padding: 8px;
+}
+
+mat-sidenav-content{
+    background-color: var(--main-bg);
+    height: 90vh;
+}
+
+mat-sidenav-content::-webkit-scrollbar{
+    display: none;
+}
+
+h3{
+    background-color: var(--btn-bg);
+    padding: 8px;
+}
+
+.list-group-item{
+    border: none;
+    margin-top: 4px;
+    background-color: var(--main-bg);
+}
+
+.list-group-item:hover{
+    background-color: aqua;
+}
+
+.bg-black{
+    background: rgb(27, 25, 25);
+    color: white;
+}
+
+.bg-black a{
+    color: wheat;
+    text-decoration: none;
+}

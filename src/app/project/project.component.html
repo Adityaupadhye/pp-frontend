@@ -1,0 +1,13 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="container px-5">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <app-project-card [prj]="this.pService.project"></app-project-card>
+            <button mat-button class="text-center w-100" (click)="goBack()">
+                <img src="/assets/icons/arrow_back.svg" alt="back icon" height="32px" width="32px">
+            </button>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

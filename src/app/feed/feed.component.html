@@ -1,0 +1,42 @@
+<!-- <app-navbar></app-navbar> -->
+<ngx-spinner type="ball-clip-rotate-multiple"><p style="color: white;">Loading...</p></ngx-spinner>
+<div class="container">
+    <div class="search-results" 
+        infinite-scroll 
+        [infiniteScrollDistance]="2" 
+        [infiniteScrollThrottle]="50"
+        [scrollWindow]="false"
+        (scrolled)="onScroll()">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div *ngFor="let prj of projects">
+                    <app-project-card [prj]="prj"></app-project-card>
+                </div>
+                <div class="alert alert-danger text-center" role="alert">
+                    No More Projects Available
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <!-- <div class="alert alert-danger text-center" role="alert">
+                No More Projects Available
+            </div> -->
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<!-- <div class="row">
+    <div class="col-md-12">
+        <div style="position: relative;">
+            <ngx-spinner bdOpacity=0.9 bdColor="" size="default" color="black" type="ball-pulse-sync"
+                [fullScreen]="false">
+            </ngx-spinner>
+        </div>
+    </div>
+</div> -->
+<footer></footer>

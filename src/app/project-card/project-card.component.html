@@ -1,0 +1,20 @@
+<div class="card my-3">    
+    <div class="card-body">
+        <div style="display: inline;">
+        </div>
+        <div class="row mb-3" style="cursor: pointer;" (click)="onProfileClick()">
+            <div class="col-auto">
+                <img [src]="prj.authorGender=='Male'? '/assets/icons/profile_man.svg': '/assets/icons/profile_woman.svg'" alt="user image" height="50px" width="50px">
+            </div>
+            <div class="col-auto">
+                <h5 class="card-title">{{prj.title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    {{prj.authorName}} <br> {{prj.createdAt}}
+                </h6> 
+            </div>
+        </div>
+        <p style="line-height: 0.9;" class="card-text" [innerHTML]="router.url=='/feed'? prj.shortDesc+' ...': prj.desc"></p>
+        <button mat-stroked-button color="primary" [innerText]="router.url=='/feed'? 'Load full Post':''" (click)="goToProject()"></button>
+        <!-- <a [routerLink]="link" class="card-link" [innerText]="maintext.innerHTML.length>50? 'see more...':''"></a> -->
+    </div>
+</div>

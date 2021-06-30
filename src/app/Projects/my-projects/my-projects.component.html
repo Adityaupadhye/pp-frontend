@@ -1,0 +1,18 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="container px-5">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div *ngFor="let prj of util.pService.myProjects">
+                <app-project-card [prj]="prj" (click)="gotoProject(prj)"></app-project-card>
+            </div>
+            <div *ngIf="!util.pService.myProjects || util.pService.myProjects.length<=0">
+                <div class="alert alert-danger mt-3 text-center" role="alert">
+                    You have not shared any Project till now! &nbsp; &nbsp;
+                    <button mat-stroked-button routerLink="/createProject">Share Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

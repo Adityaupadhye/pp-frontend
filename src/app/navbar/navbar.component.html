@@ -1,0 +1,29 @@
+<header class="navbar navbar-expand-lg navbar-light base-color sticky-top">
+    <div class="container-fluid">
+      <!-- <a routerLink="/" style="width: 20%;">
+      </a> -->
+      <img class="navbar-brand" routerLink="/" src="/assets/logo/IdeaShare_logo_cut.png" alt="IdeaShare logo" width="8%" height="8%">
+      <button class="navbar-toggler" (click)="toggleSidenav()" type="button" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" routerLink="/myprofile">
+            <img src="/assets/icons/profile.svg" alt="profile icon" width="32px" height="32px"> 
+            Profile
+          </a>
+          <a class="nav-link" routerLink="/myprojects">
+            <img src="/assets/icons/project.svg" alt="project icon" width="32px" height="32px">
+            My Projects
+          </a>
+          <a class="nav-link" routerLink="/createProject">
+            <img src="/assets/icons/new_project.svg" alt="new project icon" width="32px" height="32px">
+            New Project
+          </a>
+        </div>
+        <div class="navbar-nav ms-auto">
+            <span class="nav-link" (click)="logout()" style="cursor: pointer;">Logout</span>
+        </div>
+      </div>
+    </div>    
+  </header>

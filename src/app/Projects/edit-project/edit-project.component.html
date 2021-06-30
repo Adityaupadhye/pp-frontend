@@ -1,0 +1,84 @@
+<!-- <app-navbar></app-navbar> -->
+<div *ngIf="!this.util.pService.project.pid" class="px-5">
+    <div class="alert alert-danger mt-3 text-center" role="alert">
+        Problem loading your project! &nbsp; &nbsp;
+        <button mat-stroked-button routerLink="/feed">Back to Home</button>
+    </div>
+</div>
+<div *ngIf="this.util.pService.project.pid" class="container-fluid mb-5">
+    <div class="row pt-2">
+        <div class="col">
+            <h3>Edit Project</h3>
+        </div>
+    </div>
+    <div class="row">
+        <!-- form -->
+        <div class="col-md-6">
+            <div class="card mt-3">
+                <div class="card-body">
+                    <form>
+                        <div class="form-floating my-3">
+                            <input name="title" type="text" class="form-control" id="floatingPassword"
+                                [(ngModel)]="this.util.pService.project.title">
+                            <label for="floatingPassword">Project Title</label>
+                        </div>
+                        <div class="my-3">
+                            <!-- <textarea name="desc" type="text" class="form-control" id="floatingInput"
+                                [(ngModel)]="this.util.pService.project.desc" style="height: 200px;"></textarea> -->
+                            <label>Project Description</label>
+                            <div class="NgxEditor__Wrapper" style="height: 300px;">
+                            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"></ngx-editor-menu>
+                                <ngx-editor
+                                    [editor]="editor"
+                                    [(ngModel)]="this.util.pService.project.desc"
+                                    [disabled]="false"
+                                    name="desc"
+                                    [placeholder]="'Type here...'"
+                                ></ngx-editor>
+                            </div>
+                        </div>
+                        <div class="form-floating my-2">
+                            <select name="tag" id="tagSelect" class="form-select" [(ngModel)]="selectedTag"
+                                (ngModelChange)="newItemSelected()">
+                                <option *ngFor="let tag of tags" [value]="tag">{{tag}}</option>
+                            </select>
+                            <label for="tagSelect">Tags</label>
+                        </div>
+                        <div class="form-control my-2">
+                            <mat-chip-list>
+                                <div *ngFor="let item of this.util.pService.project.tags">
+                                    <mat-chip [selectable]="true" [removable]="true" (removed)="removeTag(item)">
+                                        {{item}}
+                                        <img src="/assets/icons/close.svg" alt="close icon" matChipRemove>
+                                    </mat-chip>
+                                </div>
+                            </mat-chip-list>
+                        </div>
+                        <button mat-raised-button class="custom-btn w-100" (click)="editProject()">SAVE CHANGES</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- preview card -->
+        <div class="col-md-6">
+            <div class="card my-3" style="cursor: pointer;">    
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-auto">
+                            <img [src]="this.util.uService.myProfile.gender=='Male'? '/assets/icons/profile_man.svg':'/assets/icons/profile_woman.svg'" height="50px" width="50px" alt="user image">
+                        </div>
+                        <div class="col-auto">
+                            <div class="ms-4">
+                                <h5 class="card-title">{{this.util.pService.project.title}}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{this.util.uService.myProfile.name}} <br> {{this.util.pService.project.createdAt}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="card-text" [innerHTML]="this.util.pService.project.desc"></p>
+                    <!-- <a href="#" class="card-link">see more...</a> -->
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

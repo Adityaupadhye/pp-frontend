@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+:root{
+    --main-bg: rgb(240, 255, 255);
+    --btn-bg: rgb(230, 65, 50);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: var(--main-bg); }
+
+.base-color{
+    background-color: var(--btn-bg);
+}
+
+.custom-btn{
+    height: 40px;
+    font-size: 25px;
+    padding: 10px;
+    color: white;
+    background-color: var(--btn-bg);
+}
+
+.custom-btn:hover{
+    color: var(--btn-bg);
+    background-color: var(--main-bg);
+}
+
+.mat-simple-snackbar{
+    color: white;
+    font-size: 18px;
+}
+
+.mat-simple-snackbar button{
+    color: black;
+    background-color: aqua;
+}
+
+.text-field{
+    font-size: 16px;
+    padding: 4px;
+    border: 2px solid black;
+    border-radius: 4px;
+    background-color: aliceblue;
+}
+
+.circle-crop{
+    border-radius: 10%;
+    width: 100% !important;
+}
+
+mat-chip{
+    background-color: yellow !important;
+    color: red !important;
+}
+
+.custom-chip{
+    background-color: yellow;
+    color: red;
+}
+
+.NgxEditor__Wrapper{
+    overflow-y: scroll;
+}
+
+/* .NgxEditor__Wrapper ngx-editor-menu{
+    overflow-x: scroll;
+} */
+
+.NgxEditor__MenuBar{
+    overflow-x: scroll;
+}

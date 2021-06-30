@@ -1,0 +1,11 @@
+.search-results{
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.search-results::-webkit-scrollbar{
+    display: none;
+}

@@ -1,0 +1,36 @@
+.navbar-brand{
+    background-color: #CBF1EF;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 5em;
+}
+
+.navbar-brand:hover{
+    background-color: var(--btn-bg);
+}
+
+.navbar-nav a{
+    color: white;
+}
+
+.navbar-nav a:hover{
+    color: black;   
+    background-color: yellow;
+    border-radius: 10px;
+}
+
+.navbar-nav span{
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: rgb(149, 0, 0);
+}
+
+.navbar-nav span:hover{
+    color: black;
+    background-color: var(--main-bg);
+}
+
+.nav-link{
+    font-size: 20px;
+}

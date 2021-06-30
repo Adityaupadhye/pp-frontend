@@ -1,0 +1,84 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="container-fluid">
+    <ngx-spinner type="ball-clip-rotate-multiple">
+        <p style="color: white;">Loading...</p>
+    </ngx-spinner>
+    <div class="row mt-3">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <!-- Personal details -->
+            <section>
+                <h3>Personal Details</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <img [src]="userProfile.gender=='Male'? '/assets/icons/profile_man.svg':'/assets/icons/profile_woman.svg'" alt="Profile Picture" class="mb-2 circle-crop"
+                                    height="250px" width="250px">
+                                <h2>{{userProfile.name}}</h2>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="my-2">
+                                    <label>Email</label>
+                                    <div class="text-field" placeholder="email">{{userProfile.email}}</div>
+                                </div>
+                                <div class="my-2">
+                                    <label>MIS</label>
+                                    <div class="text-field">{{userProfile.mis}}</div>
+                                </div>
+                                <div class="my-2">
+                                    <label>Branch</label>
+                                    <div class="text-field">Electrical</div>
+                                </div>
+                                <div class="my-2">
+                                    <label>Year of Study</label>
+                                    <div class="text-field">{{userProfile.yearOfStudy}}</div>
+                                </div>
+                                <div class="my-2">
+                                    <label>Gender</label>
+                                    <div class="text-field">{{userProfile.gender}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- skills and interests -->
+            <section class="my-3">
+                <h3>Skills and Interests</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Skills</h4>
+                        <mat-chip-list>
+                            <div *ngFor="let skill of userProfile.skills">
+                                <mat-chip class="text-uppercase">{{skill}}</mat-chip>
+                            </div>
+                        </mat-chip-list>
+                        <h4 class="mt-2">Interests</h4>
+                        <mat-chip-list>
+                            <div *ngFor="let interest of userProfile.interests">
+                                <mat-chip class="text-uppercase">{{interest}}</mat-chip>
+                            </div>
+                        </mat-chip-list>
+                    </div>
+                </div>
+            </section>
+            <!-- projects -->
+            <section class="my-3">
+                <h3>Projects</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <div *ngFor="let item of projects">
+                            <div class="alert alert-info p-1" role="alert" style="cursor: pointer;"
+                                (click)="goToProject(item)">
+                                <h4>{{item['title']}}</h4>
+                                <h6 class="text-muted">{{item['shortDesc']}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
