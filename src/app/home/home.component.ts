@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private isANumber(str: string){
-    return !/\D/.test(str);
+    return !/\D/.test(str) && str.length==9;
   }
 
   onSignUpFormSubmit(){

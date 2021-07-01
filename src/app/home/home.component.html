@@ -27,7 +27,7 @@
                             </div>
                             <div [ngClass]="{'alert alert-danger p-2 mt-2': msg.length>0}">{{msg}}</div>
                             <button mat-raised-button type="submit" class="custom-btn my-2 w-100">LOGIN</button>
-                            <p (click)="loginVisible=!loginVisible;" class="text-primary text-center" id="signUp" style="cursor: pointer;">
+                            <p (click)="loginVisible=!loginVisible; msg=''; errorTxt='';" class="text-primary text-center" id="signUp" style="cursor: pointer;">
                                 Don't have an account? Sign Up!
                             </p>
                         </form>
@@ -61,7 +61,7 @@
                             </div>
                             <div [ngClass]="{'alert alert-danger p-2 mt-2': msg.length>0}">{{msg}}</div>
                             <button mat-raised-button [disabled]="!checkAllConditions()" type="submit" class="custom-btn my-2 w-100">SIGN UP</button>
-                            <p (click)="loginVisible=!loginVisible;" class="text-primary text-center" id="signUp" style="cursor: pointer;">
+                            <p (click)="loginVisible=!loginVisible; msg=''; errorTxt='';" class="text-primary text-center" id="signUp" style="cursor: pointer;">
                                 Already have an account? Log In!
                             </p>
                         </form>
