@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { MAIN_TITLE, Profile } from '../models/Data';
+import { MAIN_TITLE, Profile, Project } from '../models/Data';
 import { UtilService } from '../Util/util.service';
 
 @Component({
@@ -11,9 +12,9 @@ import { UtilService } from '../Util/util.service';
 })
 export class UserProfileComponent implements OnInit, OnDestroy {
 
-  constructor(public util: UtilService) { }
+  constructor(public util: UtilService, private aroute: ActivatedRoute) { }
 
-  projects!: []
+  projects: Project[]=[]
   userProfile=new Profile()
   urlParams:any={}
   private subs: Subscription[]=[];
@@ -21,8 +22,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.util.spinner.show();
     
-    const s=this.util.aroute.params.subscribe((params: any)=>{
-      console.log('params= ', params);
+    const s=this.aroute.params.subscribe((params: any)=>{
+      // console.log('params= ', params);
       this.urlParams=params;
     })
 
@@ -43,7 +44,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.util.spinner.hide();
     }, (err: HttpErrorResponse)=>{
       this.util.spinner.hide();
-      this.util.snackbar.open(err.error['message'], 'OK');
+      this.util.snackbar.open('Error: '+err.error['message'], 'OK');
     })
 
     this.subs.push(s);
@@ -60,7 +61,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.util.spinner.hide();
     }, (err: HttpErrorResponse)=>{
       this.util.spinner.hide();
-      this.util.snackbar.open(err.error['message'], 'OK');
+      this.util.snackbar.open('Error: '+err.error['message']+err.status, 'OK');
     })
 
     this.subs.push(s);

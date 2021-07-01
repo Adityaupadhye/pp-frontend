@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onLoginFormSubmit(data: any){
-    console.log(data, typeof(data));
+    // console.log(data, typeof(data));
     if(data['mis']==="" || data['pswd']===""){
       this.msg="Enter all credentials";
       return;
@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onSignUpFormSubmit(){
-    console.log(this.user);
+    // console.log(this.user);
     if(this.user.pswd.length<8){
       this.msg="Password should be atleast 8 characters";
       return;

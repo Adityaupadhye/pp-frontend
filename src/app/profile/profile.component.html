@@ -3,8 +3,8 @@
     <ngx-spinner type="ball-clip-rotate-multiple">
         <p style="color: white;">Loading...</p>
     </ngx-spinner>
-    <div class="row my-3" *ngIf="!this.util.uService.myProfile.mis">
-        <div class="alert alert-danger mt-3 text-center" role="alert">
+    <div class="row my-5 px-3" *ngIf="!this.util.uService.myProfile.mis">
+        <div class="alert alert-danger text-center" role="alert">
             Problem loading your profile! &nbsp; &nbsp;
             <button mat-stroked-button routerLink="/feed">Back to Home</button>
         </div>
@@ -14,17 +14,12 @@
         <div class="col-md-10">
             <!-- Personal details -->
             <section>
-                <div class="row p-1">
-                    <div class="col-md-10">
-                        <h3>Personal Details</h3>
-                    </div>
-                    <div class="col-md-2">
-                        <button mat-button (click)="editMode=!editMode" class="w-100">
-                            <img [src]="editMode? 'assets/icons/close.svg': 'assets/icons/edit.svg'" alt="edit icon"
-                                height="32px" width="32px">
-                        </button>
-                    </div>
-                </div>
+                <h3>Personal Details
+                    <button mat-button (click)="editMode=!editMode">
+                        <img [src]="editMode? 'assets/icons/close.svg': 'assets/icons/edit.svg'" alt="edit icon"
+                            height="24px" width="24px">
+                    </button>
+                </h3>
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -135,7 +130,7 @@
                         <h4 class="mt-2">Interests</h4>
                         <div *ngIf="!editSI">
                             <mat-chip-list>
-                                <div *ngFor="let interest of this.util.uService.myProfile.skills">
+                                <div *ngFor="let interest of this.util.uService.myProfile.interests">
                                     <mat-chip>{{interest}}</mat-chip>
                                 </div>
                             </mat-chip-list>

@@ -20,7 +20,6 @@ export class EditProjectComponent implements OnInit, OnDestroy {
   selectedTag=''
   private subs: Subscription[]=[];
   editor!: Editor;
-  html='';
 
   toolbar: Toolbar=[
     ['bold', 'italic'],
@@ -53,6 +52,7 @@ export class EditProjectComponent implements OnInit, OnDestroy {
 
   editProject(){
     console.log(this.util.pService.project);
+
     this.util.spinner.show();
     const s1=this.util.pService.updateProject(this.util.pService.project.pid, this.util.pService.project)
     .subscribe((res:any)=>{
@@ -65,8 +65,11 @@ export class EditProjectComponent implements OnInit, OnDestroy {
       }
       this.util.spinner.hide();
     }, (err: HttpErrorResponse)=>{
+      this.util.spinner.hide();
       this.util.snackbar.open('Error: '+err.error['message'], 'OK');
     })
+
+    this.subs.push(s1);
     
   }
 

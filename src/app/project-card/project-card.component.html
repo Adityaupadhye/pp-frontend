@@ -13,8 +13,10 @@
                 </h6> 
             </div>
         </div>
-        <p style="line-height: 0.9;" class="card-text" [innerHTML]="router.url=='/feed'? prj.shortDesc+' ...': prj.desc"></p>
-        <button mat-stroked-button color="primary" [innerText]="router.url=='/feed'? 'Load full Post':''" (click)="goToProject()"></button>
+        <p class="card-text" [innerHTML]="router.url=='/feed'? prj.shortDesc+' ...': prj.desc"></p>
+        <div *ngIf="router.url=='/feed'">
+            <button mat-stroked-button color="primary" [innerText]="router.url=='/feed'? 'Load full Post':''" (click)="goToProject()"></button>
+        </div>
         <!-- <a [routerLink]="link" class="card-link" [innerText]="maintext.innerHTML.length>50? 'see more...':''"></a> -->
     </div>
 </div>

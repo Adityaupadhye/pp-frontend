@@ -13,8 +13,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4 text-center">
-                                <img [src]="userProfile.gender=='Male'? '/assets/icons/profile_man.svg':'/assets/icons/profile_woman.svg'" alt="Profile Picture" class="mb-2 circle-crop"
-                                    height="250px" width="250px">
+                                <img [src]="userProfile.gender=='Male'? '/assets/icons/profile_man.svg':'/assets/icons/profile_woman.svg'"
+                                    alt="Profile Picture" class="mb-2 circle-crop" height="250px" width="250px">
                                 <h2>{{userProfile.name}}</h2>
                             </div>
                             <div class="col-md-8">
@@ -72,7 +72,7 @@
                             <div class="alert alert-info p-1" role="alert" style="cursor: pointer;"
                                 (click)="goToProject(item)">
                                 <h4>{{item['title']}}</h4>
-                                <h6 class="text-muted">{{item['shortDesc']}}</h6>
+                                <h6 class="text-muted" [innerHTML]="item.shortDesc"></h6>
                             </div>
                         </div>
                     </div>

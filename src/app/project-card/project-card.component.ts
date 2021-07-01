@@ -21,13 +21,8 @@ export class ProjectCardComponent implements OnInit {
   }
 
   onProfileClick(){
-    console.log('profile requested= ', this.prj.author);
+    // cosnsole.log('profile requested= ', this.prj.author);
     this.router.navigateByUrl('/profile/'+this.prj.author);
-  }
-
-  onCardClick(ev: MouseEvent){
-    console.log('card clicked ', ev.target);
-    
   }
 
   goToProject(){

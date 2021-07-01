@@ -28,7 +28,7 @@ export class CreateProjectComponent implements OnInit,OnDestroy  {
     this.project.desc='';
     this.editor=new Editor();
     this.tags.sort();
-    console.log(this.util.uService.myProfile);
+    // console.log(this.util.uService.myProfile);
 
     this.util.titleService.setTitle('Create New Project | '+MAIN_TITLE)
     
@@ -64,13 +64,13 @@ export class CreateProjectComponent implements OnInit,OnDestroy  {
   }
 
   newItemSelected(){
-    console.log('selected= ', this.selectedTag);
+    // console.log('selected= ', this.selectedTag);
     this.project.tags.push(this.selectedTag);
   }
 
   removeTag(tag: string){
     const idx=this.project.tags.indexOf(tag);
-    console.log(idx);
+    // console.log(idx);
     
     if(idx>=0){ 
       this.project.tags.splice(idx, 1);
@@ -82,7 +82,8 @@ export class CreateProjectComponent implements OnInit,OnDestroy  {
     if(this.createSubs)
       this.createSubs.unsubscribe();
     
-      console.log('destroyed');
+      // console.log('destroyed');
+      this.editor.destroy();
   }
 
 }

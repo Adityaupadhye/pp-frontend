@@ -1,5 +1,5 @@
 <!-- <app-navbar></app-navbar> -->
-<div class="container-fluid px-5 mb-5">
+<div class="container mb-5">
     <div class="row pt-2">
         <div class="col">
             <h3>Create New Project</h3>
@@ -63,10 +63,8 @@
                             <img [src]="this.util.uService.myProfile.gender=='Male'? '/assets/icons/profile_man.svg':'/assets/icons/profile_woman.svg'" height="50px" width="50px" alt="user image">
                         </div>
                         <div class="col-auto">
-                            <div class="ms-4">
-                                <h5 class="card-title">{{project.title}}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">{{this.util.uService.myProfile.name}} {{project.createdAt}}</h6>
-                            </div>
+                            <h5 class="card-title">{{project.title}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{this.util.uService.myProfile.name}}</h6>
                         </div>
                     </div>
                     <p class="card-text" [innerHTML]="project.desc"></p>
