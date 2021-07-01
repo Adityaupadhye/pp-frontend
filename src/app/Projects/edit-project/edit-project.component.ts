@@ -70,9 +70,8 @@ export class EditProjectComponent implements OnInit, OnDestroy {
     
   }
 
-  viewEditor(){
-    console.log('text from editor: ', this.html);
-    
+  cancel(){
+    this.util.router.navigateByUrl('/feed');
   }
 
   ngOnDestroy(): void{

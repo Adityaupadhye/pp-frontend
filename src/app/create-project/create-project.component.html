@@ -48,7 +48,8 @@
                                 </div>
                             </mat-chip-list>
                         </div>
-                        <button mat-raised-button class="custom-btn w-100" (click)="createProject()">CREATE PROJECT</button>
+                        <button mat-raised-button class="custom-btn w-100 mb-2" (click)="createProject()">CREATE PROJECT</button>
+                        <button mat-stroked-button color="warn" class="w-100 my-2" (click)="cancel()">CANCEL</button>
                     </form>
                 </div>
             </div>
@@ -59,16 +60,16 @@
                 <div class="card-body">
                     <div class="row mb-3">
                         <div class="col-auto">
-                            <img [src]="uService.myProfile.gender=='Male'? '/assets/icons/profile_man.svg':'/assets/icons/profile_woman.svg'" height="50px" width="50px" alt="user image">
+                            <img [src]="this.util.uService.myProfile.gender=='Male'? '/assets/icons/profile_man.svg':'/assets/icons/profile_woman.svg'" height="50px" width="50px" alt="user image">
                         </div>
                         <div class="col-auto">
                             <div class="ms-4">
                                 <h5 class="card-title">{{project.title}}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">{{uService.myProfile.name}} {{project.createdAt}}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">{{this.util.uService.myProfile.name}} {{project.createdAt}}</h6>
                             </div>
                         </div>
                     </div>
-                    <p style="line-height: 0.4;" class="card-text" [innerHTML]="project.desc"></p>
+                    <p class="card-text" [innerHTML]="project.desc"></p>
                     <!-- <a href="#" class="card-link">see more...</a> -->
                 </div>
             </div>
