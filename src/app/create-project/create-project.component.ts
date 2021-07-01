@@ -47,6 +47,7 @@ export class CreateProjectComponent implements OnInit,OnDestroy  {
     this.createSubs=this.util.pService.createProject(this.util.uService.myProfile.uid, this.project)
     .subscribe((res:any)=>{
       if(res['status']){
+        this.project.pid=res['pid'];
         this.util.pService.myProjects.push(this.project);  
         this.util.snackbar.open(res['message'], 'OK');
         this.util.router.navigateByUrl('/feed');

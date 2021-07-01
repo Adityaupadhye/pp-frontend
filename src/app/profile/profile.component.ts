@@ -125,6 +125,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   deleteProject(pid: any){
     console.log('deleting pid= ', pid);
+    if(!pid){
+      alert('Error deleting project');
+      return;
+    }
     this.util.spinner.show();
     const s2= this.util.pService.deleteProject(pid)
     .subscribe((res:any)=>{
@@ -133,7 +137,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       }
       this.util.spinner.hide();
     }, (err: HttpErrorResponse)=>{
-      this.util.snackbar.open(err.error['message'], 'OK');
+      this.util.snackbar.open('Error: '+err.error['message'], 'OK');
       this.util.spinner.hide();
     })
 
