@@ -55,7 +55,10 @@ export class CreateProjectComponent implements OnInit,OnDestroy  {
       this.util.spinner.hide();
     }, (err: HttpErrorResponse)=>{
       this.util.spinner.hide();
-      this.util.snackbar.open(err.error['message'], 'OK');
+      if(err.status==0)
+        this.util.snackbar.open('Connection Error', 'OK');
+      else
+        this.util.snackbar.open('Error: '+err.status+err.error['message'], 'OK');
     })
     
   }
